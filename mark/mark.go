@@ -1,6 +1,7 @@
 package mark
 
 import (
+	_ "embed"
 	"io"
 	"strings"
 	"text/template"
@@ -62,30 +63,29 @@ type PDFRenderer interface {
 	RenderPDF(zmark io.Reader) (io.Reader, error)
 }
 
-// Usage outputs a Markdown view of a Cmd from
-// [pkg/github.com/rwxrob/bonzai] package filling the Cmd.Long by
-// rendering it as a [pkg/text/template] using itself as the object and
-// merging the Cmd.Funcs over [pkg/github.com/rwxrob/mark/funcs].Map to
-// provide the [pkg/text/template.Funcs]. This Markdown can be passed to
-// any [Renderer] but can also be piped directly to tools that support
-// Markdown like [Pandoc]. Callers can override the {{cmdtree . }}
-// function with their own if more detailed tree representations are
-// wanted, but doing so risks breaking renderers that expect the command
-// tree to be in the default format.
+//go:embed template.md
+var DefaultBonzaiCmdTemplate string
+
+// Bonzai outputs a template filled with the commands from the funcs
+// package of this package plus the fields and Funcs from the bonzai.Cmd
+// structure passed. The overall template can be changed by assigning to
+// DefaultBonzaiCmdTemplate.
+//
+// See following for details:
+//
+// - [pkg/github.com/rwxrob/bonzai]
+// - [pkg/github.com/rwxrob/bonzai/mark/funcs]
+// - [pkg/text/template]
+//
+// Normally, the output from this command is then passed to an instance
+// of [Renderer] to be rendered and displayed to the user or piped
+// directly to rendering tools like [Pandoc]. Any of the functions from
+// the funcs library can be overridden by Cmd.Funcs instead.
 //
 // [Pandoc]: https://pandoc.org/
-func Usage(x *bonzai.Cmd) (string, error) {
-	out := new(strings.Builder)
-	out.WriteString("# Usage\n\n")
-	out.WriteString("{{cmdtree .}}")
-	if len(x.Long) > 0 {
-		out.WriteString("\n" + to.Dedented(x.Long))
-		if x.Long[len(x.Long)-1] != '\n' {
-			out.WriteString("\n")
-		}
-	}
+func Bonzai(x *bonzai.Cmd) (string, error) {
 	f := to.MergedMaps(funcs.Map, x.Funcs)
-	return Fill(x, f, out.String())
+	return Fill(x, f, DefaultBonzaiCmdTemplate)
 }
 
 // Fill processes the input string (in) as a [pkg/text/template] using

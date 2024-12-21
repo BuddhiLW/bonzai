@@ -87,19 +87,30 @@ func ExampleUsage_withHiddenCmds() {
 			On multiple lines.`,
 	}
 
-	out, _ := mark.Usage(Cmd)
+	Cmd.Run()
+	out, _ := mark.Bonzai(Cmd)
 	fmt.Println(string(out))
 
 	// Output:
+	// # Name
+	//
+	// `mycmd` (`my`|`cmd`) — my command short summary
+	//
 	// # Usage
 	//
-	//     mycmd      ← my command short summary
-	//       foo      ← foo this command
-	//         subfoo ← under the foo command
-	//       bar      ← bar this command
+	//     my|cmd|mycmd COMMAND
+	//
+	// # Commands
+	//
+	//     foo      ← foo this command
+	//       subfoo ← under the foo command
+	//     bar      ← bar this command
+	//
+	// # Description
 	//
 	// Here is a long description.
 	// On multiple lines.
+
 }
 
 func ExampleUsage_missingShort() {
@@ -138,19 +149,30 @@ func ExampleUsage_missingShort() {
 			On multiple lines.`,
 	}
 
-	out, _ := mark.Usage(Cmd)
+	Cmd.Run()
+	out, _ := mark.Bonzai(Cmd)
 	fmt.Println(out)
 
 	// Output:
+	// # Name
+	//
+	// `mycmd` (`my`|`cmd`) — my command short summary
+	//
 	// # Usage
 	//
-	//     mycmd      ← my command short summary
-	//       foo
-	//         subfoo ← under the foo command
-	//       bar      ← bar this command
+	//     my|cmd|mycmd COMMAND
+	//
+	// # Commands
+	//
+	//     foo
+	//       subfoo ← under the foo command
+	//     bar      ← bar this command
+	//
+	// # Description
 	//
 	// Here is a long description.
 	// On multiple lines.
+
 }
 
 func ExampleUsage_middle() {
@@ -191,17 +213,26 @@ func ExampleUsage_middle() {
 
 	_ = Cmd
 
-	out, err := mark.Usage(fooCmd)
+	Cmd.Run()
+	out, err := mark.Bonzai(fooCmd)
 	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(out)
 
 	// Output:
+	// # Name
+	//
+	// `foo` (`f`)
+	//
 	// # Usage
 	//
-	//     foo
-	//       subfoo ← under the foo command
+	//     f|foo COMMAND
+	//
+	// # Commands
+	//
+	//     subfoo ← under the foo command
+
 }
 
 func ExampleUsage_longFirstName() {
@@ -223,16 +254,22 @@ func ExampleUsage_longFirstName() {
 		Def:   fooCmd,
 	}
 
-	Cmd.Seek(`foo`) // for default
-
-	out, _ := mark.Usage(Cmd)
+	Cmd.Run(`foo`) // for default
+	out, _ := mark.Bonzai(Cmd)
 	fmt.Println(string(out))
 
 	// Output:
+	// # Name
+	//
+	// `help-test` (`h`|`ht`) — just a help test
+	//
 	// # Usage
 	//
-	//     help-test ← just a help test
-	//       foo     ← (default)
-	//       foo2
-
+	//     h|ht|help-test COMMAND|some|-y|--yaml
+	//
+	// # Commands
+	//
+	//     foo ← (default)
+	//     foo2
+	//
 }
