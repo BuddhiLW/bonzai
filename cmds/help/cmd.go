@@ -12,7 +12,7 @@ var Cmd = &bonzai.Cmd{
 	Vers:  `v0.7.9`,
 	Short: `display command help`,
 	Long: `
-		The {{aka .}} command displays the help information for the
+		The {{code .Name}} command displays the help information for the
 		immediate previous command unless it is passed arguments, in which
 		case it resolves the arguments as if they were passed to the
 		previous command and the help for the leaf command is displayed
@@ -26,7 +26,7 @@ var Cmd = &bonzai.Cmd{
 			x = x.Caller()
 		}
 
-		out, err := mark.Usage(x)
+		out, err := mark.Bonzai(x)
 		if err != nil {
 			return err
 		}

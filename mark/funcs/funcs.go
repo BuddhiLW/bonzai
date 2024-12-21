@@ -84,13 +84,13 @@ func Fill(it any, f template.FuncMap, in string) (string, error) {
 	return out.String(), nil
 }
 
-// Summary returns the AKA joined by a long dash with the commands Short
+// Summary returns the Name joined by a long dash with the Short
 // description if it has one.
 func Summary(x *bonzai.Cmd) string {
 	if x.Short == "" {
-		return AKA(x)
+		return x.Name
 	}
-	return AKA(x) + " — " + x.Short
+	return x.Name + " — " + x.Short
 }
 
 // Command returns the name of the command joined to any aliases at the
