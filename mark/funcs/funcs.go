@@ -172,14 +172,14 @@ func Commands(x *bonzai.Cmd) string {
 	lines := to.Lines(tree)[1:]
 	var widest int
 	for _, line := range lines {
-		if length := countRunes(line, '←'); length > widest {
+		if length := countRunes(line, '—'); length > widest {
 			widest = length
 		}
 	}
 	for i, line := range lines {
-		parts := strings.Split(line, "←")
+		parts := strings.Split(line, "—")
 		if len(parts) > 1 {
-			lines[i] = fmt.Sprintf("%-*v←%v", widest, parts[0], parts[1])
+			lines[i] = fmt.Sprintf("%-*v—%v", widest, parts[0], parts[1])
 		} else {
 			lines[i] = line
 		}
@@ -213,12 +213,12 @@ func CmdTree(x *bonzai.Cmd, depth int) string {
 		}
 		out.WriteString(name)
 		if len(c.Short) > 0 {
-			out.WriteString(" ← " + c.Short)
+			out.WriteString(" — " + c.Short)
 		}
 		caller := c.Caller()
 		if caller != nil && caller.Def == c {
 			if len(c.Short) == 0 {
-				out.WriteString(" ←")
+				out.WriteString(" —")
 			}
 			out.WriteString(" (default)")
 		}

@@ -102,9 +102,9 @@ func ExampleUsage_withHiddenCmds() {
 	//
 	// # Commands
 	//
-	//     foo      ← foo this command
-	//       subfoo ← under the foo command
-	//     bar      ← bar this command
+	//     foo      — foo this command
+	//       subfoo — under the foo command
+	//     bar      — bar this command
 	//
 	// # Description
 	//
@@ -165,8 +165,8 @@ func ExampleUsage_missingShort() {
 	// # Commands
 	//
 	//     foo
-	//       subfoo ← under the foo command
-	//     bar      ← bar this command
+	//       subfoo — under the foo command
+	//     bar      — bar this command
 	//
 	// # Description
 	//
@@ -231,7 +231,7 @@ func ExampleUsage_middle() {
 	//
 	// # Commands
 	//
-	//     subfoo ← under the foo command
+	//     subfoo — under the foo command
 
 }
 
@@ -269,7 +269,7 @@ func ExampleUsage_longFirstName() {
 	//
 	// # Commands
 	//
-	//     foo ← (default)
+	//     foo — (default)
 	//     foo2
 	//
 }

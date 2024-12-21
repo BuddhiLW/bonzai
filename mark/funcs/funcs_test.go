@@ -74,9 +74,9 @@ func ExampleCommand() {
 	fmt.Println(funcs.Commands(Cmd))
 
 	// Output:
-	// foo      ← foo this command (default)
-	//   subfoo ← under the foo command
-	// bar      ← bar this command
+	// foo      — foo this command (default)
+	//   subfoo — under the foo command
+	// bar      — bar this command
 }
 
 func ExampleCommands_hidden() {
@@ -116,9 +116,9 @@ func ExampleCommands_hidden() {
 	fmt.Println(funcs.Commands(Cmd))
 
 	// Output:
-	// foo      ← foo this command (default)
-	//   subfoo ← under the foo command
-	// bar      ← bar this command
+	// foo      — foo this command (default)
+	//   subfoo — under the foo command
+	// bar      — bar this command
 
 }
 
