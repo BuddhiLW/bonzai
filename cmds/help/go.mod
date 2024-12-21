@@ -5,7 +5,7 @@ go 1.23.0
 require (
 	github.com/rwxrob/bonzai v0.56.5
 	github.com/rwxrob/bonzai/comp v0.10.0
-	github.com/rwxrob/bonzai/mark v0.11.2
+	github.com/rwxrob/bonzai/mark v0.11.3
 	github.com/rwxrob/bonzai/term v0.2.1
 )
 
@@ -15,7 +15,7 @@ require (
 	github.com/rwxrob/bonzai/fn v0.9.0 // indirect
 	github.com/rwxrob/bonzai/futil v0.4.0 // indirect
 	github.com/rwxrob/bonzai/is v0.3.0 // indirect
-	github.com/rwxrob/bonzai/mark/funcs v0.8.4 // indirect
+	github.com/rwxrob/bonzai/mark/funcs v0.8.5 // indirect
 	github.com/rwxrob/bonzai/run v0.7.0 // indirect
 	github.com/rwxrob/bonzai/scanner v0.1.0 // indirect
 	github.com/rwxrob/bonzai/to v0.6.1 // indirect
