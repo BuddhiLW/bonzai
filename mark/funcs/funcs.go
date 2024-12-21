@@ -36,10 +36,53 @@ var Map = template.FuncMap{
 	"long":         Long,
 }
 
+// unfortunate redundancy
+var longMap = template.FuncMap{
+	"exepath":      run.Executable,
+	"exename":      run.ExeName,
+	"execachedir":  run.ExeCacheDir,
+	"exestatedir":  run.ExeStateDir,
+	"execonfigdir": run.ExeConfigDir,
+	"cachedir":     futil.UserCacheDir,
+	"confdir":      futil.UserConfigDir,
+	"homedir":      futil.UserHomeDir,
+	"statedir":     futil.UserStateDir,
+	"pathsep":      func() string { return string(os.PathSeparator) },
+	"pathjoin":     filepath.Join,
+	"indent":       to.Indented,
+	"aka":          AKA,
+	"code":         Code,
+	"commands":     Commands,
+	"command":      Command,
+	"summary":      Summary,
+	"usage":        Usage,
+	"hasenv":       HasEnv,
+}
+
 // Long returns the Long description of the command if found dedented so
-// that it is left justified completely. Combine with indent when
-// needed.
-func Long(x *bonzai.Cmd) string { return to.Dedented(x.Long) }
+// that it is left justified completely. It is first filled using the
+// Map merged with the Funcs from the passed command.
+func Long(x *bonzai.Cmd) (string, error) {
+	long := to.Dedented(x.Long)
+	f := to.MergedMaps(longMap, x.Funcs)
+	return Fill(x, f, long)
+}
+
+// Fill processes the input string (in) as a [pkg/text/template] using
+// the provided function map (f) and the data context (it). It returns
+// the rendered output as a string or an error if any step fails. No
+// functions beyond those passed are merged.
+func Fill(it any, f template.FuncMap, in string) (string, error) {
+	tmpl, err := template.New("t").Funcs(f).Parse(in)
+	if err != nil {
+		return "", err
+	}
+	out := new(strings.Builder)
+	if err := tmpl.Execute(out, it); err != nil {
+		return "", err
+	}
+	return out.String(), nil
+}
 
 // Summary returns the AKA joined by a long dash with the commands Short
 // description if it has one.
