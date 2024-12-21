@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	github.com/rwxrob/bonzai v0.56.5
-	github.com/rwxrob/bonzai/mark/funcs v0.8.0
+	github.com/rwxrob/bonzai/mark/funcs v0.8.2
 	github.com/rwxrob/bonzai/to v0.6.1
 )
 
