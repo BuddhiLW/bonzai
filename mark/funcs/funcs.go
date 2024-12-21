@@ -39,16 +39,7 @@ var Map = template.FuncMap{
 // Long returns the Long description of the command if found dedented so
 // that it is left justified completely. Combine with indent when
 // needed.
-func Long(x *bonzai.Cmd) string {
-	out := new(strings.Builder)
-	if len(x.Long) > 0 {
-		out.WriteString("\n" + to.Dedented(x.Long))
-		if x.Long[len(x.Long)-1] != '\n' {
-			out.WriteString("\n")
-		}
-	}
-	return out.String()
-}
+func Long(x *bonzai.Cmd) string { return to.Dedented(x.Long) }
 
 // Summary returns the AKA joined by a long dash with the commands Short
 // description if it has one.
@@ -91,8 +82,8 @@ func Usage(x *bonzai.Cmd) string {
 		if len(x.Cmds) > 0 {
 			usage = `COMMAND`
 		}
-		if x.Alias != "" {
-			usage += `|` + x.Alias
+		if x.Opts != "" {
+			usage += `|` + x.Opts
 		}
 	}
 	return Command(x) + " " + usage

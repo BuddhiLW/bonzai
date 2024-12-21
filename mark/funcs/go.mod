@@ -6,7 +6,7 @@ require (
 	github.com/rwxrob/bonzai v0.56.5
 	github.com/rwxrob/bonzai/futil v0.4.0
 	github.com/rwxrob/bonzai/run v0.7.0
-	github.com/rwxrob/bonzai/to v0.6.0
+	github.com/rwxrob/bonzai/to v0.6.1
 )
 
 require (
