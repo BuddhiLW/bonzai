@@ -88,9 +88,9 @@ func Fill(it any, f template.FuncMap, in string) (string, error) {
 // description if it has one.
 func Summary(x *bonzai.Cmd) string {
 	if x.Short == "" {
-		return x.Name
+		return "`" + x.Name + "`"
 	}
-	return x.Name + " — " + x.Short
+	return "`" + x.Name + "` — " + x.Short
 }
 
 // Command returns the name of the command joined to any aliases at the

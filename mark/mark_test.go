@@ -94,7 +94,7 @@ func ExampleUsage_withHiddenCmds() {
 	// Output:
 	// # Name
 	//
-	// `mycmd` (`my`|`cmd`) — my command short summary
+	// `mycmd` — my command short summary
 	//
 	// # Usage
 	//
@@ -156,7 +156,7 @@ func ExampleUsage_missingShort() {
 	// Output:
 	// # Name
 	//
-	// `mycmd` (`my`|`cmd`) — my command short summary
+	// `mycmd` — my command short summary
 	//
 	// # Usage
 	//
@@ -223,7 +223,7 @@ func ExampleUsage_middle() {
 	// Output:
 	// # Name
 	//
-	// `foo` (`f`)
+	// `foo`
 	//
 	// # Usage
 	//
@@ -261,7 +261,7 @@ func ExampleUsage_longFirstName() {
 	// Output:
 	// # Name
 	//
-	// `help-test` (`h`|`ht`) — just a help test
+	// `help-test` — just a help test
 	//
 	// # Usage
 	//

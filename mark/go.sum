@@ -32,6 +32,8 @@ github.com/rwxrob/bonzai/mark/funcs v0.8.0 h1:94/deDv/5JedfZcEfFO/Om2TUeZ3yhpyVD
 github.com/rwxrob/bonzai/mark/funcs v0.8.0/go.mod h1:vHy/0M887S9KoMSh007MmJdNG788jbmwGjo/FNdtRfk=
 github.com/rwxrob/bonzai/mark/funcs v0.8.2 h1:Cq7N0zHp+zHUHs47cy1BUIeA9XtEBR57l/dcebh9J4g=
 github.com/rwxrob/bonzai/mark/funcs v0.8.2/go.mod h1:vHy/0M887S9KoMSh007MmJdNG788jbmwGjo/FNdtRfk=
+github.com/rwxrob/bonzai/mark/funcs v0.8.3 h1:xnb6XS2suxJm5lY+/b6W39FnQ2nHYJKvblF/UM5oU/I=
+github.com/rwxrob/bonzai/mark/funcs v0.8.3/go.mod h1:vHy/0M887S9KoMSh007MmJdNG788jbmwGjo/FNdtRfk=
 github.com/rwxrob/bonzai/run v0.7.0 h1:rP1GPxkLocijBVEs58duMymKTiyQfbthfoAh7VoThG0=
 github.com/rwxrob/bonzai/run v0.7.0/go.mod h1:KhMNAJ3t78LDAHur60xiGA564UejG69PgV51k2QjXD8=
 github.com/rwxrob/bonzai/scanner v0.1.0 h1:xPf5817Mt0lkm2GvygJIGBqq0sS7thvh5ceK3RjWhkQ=

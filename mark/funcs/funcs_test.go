@@ -121,3 +121,17 @@ func ExampleCommands_hidden() {
 	// bar      ← bar this command
 
 }
+
+func ExampleSummary() {
+
+	var Cmd = &bonzai.Cmd{
+		Name:  `mycmd`,
+		Short: `my command short summary`,
+		Do:    bonzai.Nothing,
+	}
+
+	fmt.Print(funcs.Summary(Cmd))
+
+	// Output:
+	// `mycmd` — my command short summary
+}
