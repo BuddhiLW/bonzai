@@ -167,11 +167,8 @@ func Lines(in any) []string {
 //
 //	{{ .Some | indent 4 }}
 func Indented(indent int, in string) string {
-	var buf string
-	for _, line := range Lines(in) {
-		buf += fmt.Sprintln(strings.Repeat(" ", indent) + line)
-	}
-	return buf
+	prefix := strings.Repeat(" ", indent)
+	return Prefixed(prefix, in)
 }
 
 // IndentWrapped adds the specified number of spaces to the beginning of
