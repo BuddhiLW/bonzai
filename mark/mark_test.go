@@ -92,21 +92,21 @@ func ExampleUsage_withHiddenCmds() {
 	fmt.Println(string(out))
 
 	// Output:
-	// # Name
+	// # NAME
 	//
-	// `mycmd` — my command short summary
+	// `mycmd` - my command short summary
 	//
-	// # Usage
+	// # USAGE
 	//
 	//     my|cmd|mycmd COMMAND
 	//
-	// # Commands
+	// # COMMANDS
 	//
-	//     foo      — foo this command
-	//       subfoo — under the foo command
-	//     bar      — bar this command
+	//     foo      - foo this command
+	//       subfoo - under the foo command
+	//     bar      - bar this command
 	//
-	// # Description
+	// # DESCRIPTION
 	//
 	// Here is a long description.
 	// On multiple lines.
@@ -154,21 +154,21 @@ func ExampleUsage_missingShort() {
 	fmt.Println(out)
 
 	// Output:
-	// # Name
+	// # NAME
 	//
-	// `mycmd` — my command short summary
+	// `mycmd` - my command short summary
 	//
-	// # Usage
+	// # USAGE
 	//
 	//     my|cmd|mycmd COMMAND
 	//
-	// # Commands
+	// # COMMANDS
 	//
 	//     foo
-	//       subfoo — under the foo command
-	//     bar      — bar this command
+	//       subfoo - under the foo command
+	//     bar      - bar this command
 	//
-	// # Description
+	// # DESCRIPTION
 	//
 	// Here is a long description.
 	// On multiple lines.
@@ -221,17 +221,17 @@ func ExampleUsage_middle() {
 	fmt.Println(out)
 
 	// Output:
-	// # Name
+	// # NAME
 	//
 	// `foo`
 	//
-	// # Usage
+	// # USAGE
 	//
 	//     f|foo COMMAND
 	//
-	// # Commands
+	// # COMMANDS
 	//
-	//     subfoo — under the foo command
+	//     subfoo - under the foo command
 
 }
 
@@ -259,17 +259,17 @@ func ExampleUsage_longFirstName() {
 	fmt.Println(string(out))
 
 	// Output:
-	// # Name
+	// # NAME
 	//
-	// `help-test` — just a help test
+	// `help-test` - just a help test
 	//
-	// # Usage
+	// # USAGE
 	//
 	//     h|ht|help-test COMMAND|some|-y|--yaml
 	//
-	// # Commands
+	// # COMMANDS
 	//
-	//     foo — (default)
+	//     foo - (default)
 	//     foo2
 	//
 }

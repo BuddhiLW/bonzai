@@ -1,20 +1,21 @@
-# Name
+# NAME
 
 {{ summary . }}
 
-# Usage
+# USAGE
 
 {{ usage . | indent 4 }}
 
 {{if .Cmds -}}
-# Commands
+# COMMANDS
 
 {{ commands . | indent 4 }}
 
 {{ end -}}
 {{- if .Long -}}
-# Description
+# DESCRIPTION
 
 {{ long . }}
 
 {{ end }}
+

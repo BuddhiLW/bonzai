@@ -19,6 +19,19 @@ var cmd = &bonzai.Cmd{
 var fooCmd = &bonzai.Cmd{
 	Name: `foo`,
 	Cmds: []*bonzai.Cmd{underfooCmd},
+	Long: `
+A whole bunch of stuff:
+
+~~~go
+package main
+import "this"
+
+func main() {
+	fmt.Println("something")
+}
+
+~~~
+`,
 }
 
 var underfooCmd = &bonzai.Cmd{

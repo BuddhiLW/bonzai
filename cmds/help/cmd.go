@@ -1,9 +1,11 @@
 package help
 
 import (
+	"fmt"
+
+	"github.com/charmbracelet/glamour"
 	"github.com/rwxrob/bonzai"
 	"github.com/rwxrob/bonzai/mark"
-	"github.com/rwxrob/bonzai/term"
 )
 
 var Cmd = &bonzai.Cmd{
@@ -26,12 +28,70 @@ var Cmd = &bonzai.Cmd{
 			x = x.Caller()
 		}
 
-		out, err := mark.Bonzai(x)
+		md, err := mark.Bonzai(x)
 		if err != nil {
 			return err
 		}
 
-		term.Print(out)
+		renderer, err := glamour.NewTermRenderer(
+			glamour.WithAutoStyle(),
+			//glamour.WithWordWrap(0),
+			glamour.WithPreservedNewLines(),
+
+			glamour.WithStylesFromJSONBytes([]byte(`{
+				"document":{
+					"margin":0,
+					"block_prefix":"",
+					"block_suffix":""
+				},
+				"heading": {
+					"block_prefix":"",
+					"block_suffix":""
+				},
+				"h1":{
+					"background_color": "",
+					"color": "11",
+					"prefix": "",
+					"suffix": "",
+					"block_prefix": "",
+					"block_suffix": ""
+				},
+				"h2":{
+					"background_color": "",
+					"color": "5"
+				},
+				"paragraph": {
+					"margin": 6,
+					"block_prefix":""
+				},
+				"list": {
+					"margin": 6
+				},
+				"code_block": {
+					"margin": 6
+				},
+				"blockquote": {
+					"margin": 6
+				},
+				"code": {
+					"color": "11",
+					"background_color": "",
+					"prefix":"",
+					"suffix":""
+				}
+
+			}`)),
+		)
+		if err != nil {
+			return fmt.Errorf("developer-error: %v", err)
+		}
+
+		rendered, err := renderer.Render(md)
+		if err != nil {
+			return fmt.Errorf("developer-error: %v", err)
+		}
+
+		fmt.Println("\u001b[2J\u001b[H" + rendered)
 
 		return nil
 	},
