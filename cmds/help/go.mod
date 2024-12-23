@@ -7,6 +7,7 @@ require (
 	github.com/rwxrob/bonzai v0.56.5
 	github.com/rwxrob/bonzai/comp v0.10.0
 	github.com/rwxrob/bonzai/mark v0.12.0
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (

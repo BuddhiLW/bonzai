@@ -1,12 +1,18 @@
 package help
 
 import (
+	_ "embed"
+	"encoding/json"
 	"fmt"
 
 	"github.com/charmbracelet/glamour"
 	"github.com/rwxrob/bonzai"
 	"github.com/rwxrob/bonzai/mark"
+	"gopkg.in/yaml.v3"
 )
+
+//go:embed style.yaml
+var styles []byte
 
 var Cmd = &bonzai.Cmd{
 	Name:  `help`,
@@ -33,55 +39,22 @@ var Cmd = &bonzai.Cmd{
 			return err
 		}
 
+		// load embedded yaml file and convert to json
+		styleMap := map[string]any{}
+		if err := yaml.Unmarshal(styles, &styleMap); err != nil {
+			return err
+		}
+		jsonBytes, err := json.Marshal(styleMap)
+		if err != nil {
+			return err
+		}
+
 		renderer, err := glamour.NewTermRenderer(
 			glamour.WithAutoStyle(),
-			//glamour.WithWordWrap(0),
 			glamour.WithPreservedNewLines(),
-
-			glamour.WithStylesFromJSONBytes([]byte(`{
-				"document":{
-					"margin":0,
-					"block_prefix":"",
-					"block_suffix":""
-				},
-				"heading": {
-					"block_prefix":"",
-					"block_suffix":""
-				},
-				"h1":{
-					"background_color": "",
-					"color": "11",
-					"prefix": "",
-					"suffix": "",
-					"block_prefix": "",
-					"block_suffix": ""
-				},
-				"h2":{
-					"background_color": "",
-					"color": "5"
-				},
-				"paragraph": {
-					"margin": 6,
-					"block_prefix":""
-				},
-				"list": {
-					"margin": 6
-				},
-				"code_block": {
-					"margin": 6
-				},
-				"blockquote": {
-					"margin": 6
-				},
-				"code": {
-					"color": "11",
-					"background_color": "",
-					"prefix":"",
-					"suffix":""
-				}
-
-			}`)),
+			glamour.WithStylesFromJSONBytes(jsonBytes),
 		)
+
 		if err != nil {
 			return fmt.Errorf("developer-error: %v", err)
 		}
