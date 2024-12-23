@@ -288,7 +288,7 @@ func (x *Cmd) Get(key string) string {
 	// declaration is mandatory
 	v, has := x.vars[key]
 	if !has {
-		panic(`not declared in Vars: ` + key)
+		panic(`developer-error: not declared in Vars: ` + key)
 	}
 
 	// inherited, recurse
@@ -354,7 +354,7 @@ func (x *Cmd) Set(key, value string) {
 	// declaration is mandatory
 	v, has := x.vars[key]
 	if !has {
-		panic(`not declared in Vars: ` + key)
+		panic(`developer-error: not declared in Vars: ` + key)
 	}
 
 	// inherited, recurse
