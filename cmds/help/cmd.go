@@ -12,7 +12,7 @@ import (
 )
 
 //go:embed style.yaml
-var styles []byte
+var Style []byte
 
 var Cmd = &bonzai.Cmd{
 	Name:  `help`,
@@ -41,7 +41,7 @@ var Cmd = &bonzai.Cmd{
 
 		// load embedded yaml file and convert to json
 		styleMap := map[string]any{}
-		if err := yaml.Unmarshal(styles, &styleMap); err != nil {
+		if err := yaml.Unmarshal(Style, &styleMap); err != nil {
 			return err
 		}
 		jsonBytes, err := json.Marshal(styleMap)
